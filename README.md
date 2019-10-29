@@ -40,7 +40,7 @@ $ FLASK_APP=mylunch.py flask run
 ```bash
 $ FLASK_DEBUG=1 FLASK_APP=mylunch.py flask run
 ```
-[`127.0.0.1:5000/haedal`](127.0.0.0:5000/haedal)을 만들어 봅니다 
+[`http://127.0.0.1:5000/haedal`](http://127.0.0.0:5000/haedal)을 만들어 봅니다 
 
 ```python
 from flask import Flask
@@ -93,7 +93,7 @@ def greeting(name):
   return f'반갑습니다. {name}!'
 ```
 위의 코드를 `mylunch.py`에 삽입합니다  
-서버를 키고 [127.0.0.1:5000/greeting/자기이름](127.0.0.1:5000/greeting/자기이름)으로 가봅니다
+서버를 키고 [127.0.0.1:5000/greeting/자기이름](http://127.0.0.1:5000/greeting/자기이름)으로 가봅니다
 
 ![img/greeting_name.png](img/greeting_name.png)
 
@@ -108,7 +108,7 @@ def cube(num):
   return f'{num}의 세제곱은 {result}'
 ```
 위의 코드를 `mylunch.py`에 삽입합니다   
-서버를 키고 [127.0.0.1:5000/cube/숫자](127.0.0.1:5000/cube/숫자)로 가봅니다
+서버를 키고 [127.0.0.1:5000/cube/숫자](http://127.0.0.1:5000/cube/숫자)로 가봅니다
 
 ![img/cube.png](img/cube.png)
 
@@ -126,4 +126,4 @@ def lunch(people):
 ```
 
 위의 코드를 `mylunch.py`에 삽입합니다   
-서버를 키고 [127.0.0.1:5000/cube/숫자](127.0.0.1:5000/cube/숫자)로 가봅니다
+서버를 키고 [127.0.0.1:5000/cube/숫자](http://127.0.0.1:5000/cube/숫자)로 가봅니다
