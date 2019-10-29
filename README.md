@@ -40,7 +40,7 @@ $ FLASK_APP=mylunch.py flask run
 ```bash
 $ FLASK_DEBUG=1 FLASK_APP=mylunch.py flask run
 ```
-[`http://127.0.0.1:5000/haedal`](http://127.0.0.0:5000/haedal)을 만들어 봅니다 
+[http://127.0.0.1:5000/haedal](http://127.0.0.0:5000/haedal)을 만들어 봅니다 
 
 ```python
 from flask import Flask
@@ -126,4 +126,47 @@ def lunch(people):
 ```
 
 위의 코드를 `mylunch.py`에 삽입합니다   
-서버를 키고 [127.0.0.1:5000/cube/숫자](http://127.0.0.1:5000/cube/숫자)로 가봅니다
+서버를 키고 [127.0.0.1:5000/lunch/사람수](http://127.0.0.1:5000/lunch/사람수)로 가봅니다  
+메뉴보다 사람이 많은 경우 오류가 납니다  
+이를 해결해볼 수 있을까요? :)  
+
+## 점심 메뉴 보여주기
+
+메뉴를 골라 해당하는 음식 사진을 보여줍니다  
+`static` 폴더를 만들고, 원하는 사진들을 집어 넣습니다  
+`templates` 폴더를 만들고, `index.html` 파일을 생성합니다   
+아래의 디렉토리 처럼 만들면 됩니다 :) 
+
+![img/directory.png](img/directory.png)
+
+`mylunch.py`
+```python
+from flask import Flask, render_template
+
+# 점심 메뉴 보여주자
+@app.route("/show")
+def show():
+  # 음식 사진을 static 폴더에 추가하고 menu에 집어 넣습니다
+  # 음식 메뉴 개수는 더 많아도 됩니다
+  menu = ['짜장면.jpg', '짬뽕.jpeg']
+  # 음식 메뉴 1개를 뽑습니다
+  pickme = ''.join(sample(menu,1))
+  # index.html 파일에 이비지를 불러옵니다
+  return render_template('index.html', food_img=pickme)
+```
+
+`index.html`
+```html
+<!doctype html>
+<html>
+<head>
+    <title>show</title>
+</head>
+<body>
+    <img src={{ url_for('static', filename=food_img) }}>
+</body>
+</html>
+```
+![img/show.png](img/show.png)
+
+수고하셨습니다 :)
